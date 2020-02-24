@@ -1,3 +1,18 @@
 <html>
-    <h1>Happy birthday Andrew!</h1>
-</html> 
+    <h1>WorldChicago partner organizations</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Description</th>
+        </tr>
+
+        <% @organizations.each do |organization| %>
+            <tr>
+                <td><%= organization.name %></td>
+                <td><%= organization.address %></td>
+                <td><%= organization.description %></td>
+            </tr>
+        <% end %>
+    </table>
+</html>
