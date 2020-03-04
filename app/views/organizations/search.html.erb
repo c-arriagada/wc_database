@@ -1,25 +1,49 @@
-<h1>Search organization</h1>
-<h4>Search by name</h4>
-<%= form_tag(organizations_search_path, method: :get) do %>
-    <%= text_field_tag(:search, params[:search]) %>
-    <%= submit_tag("Search") %>
-    <% end %>
+<html>
+    <head>
+        <%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+    </head>
+    <body>
+        <h1>Search organization</h1>
+        <h4>Search by name</h4>
+        <%= form_tag(organizations_search_path, method: :get) do %>
+            <%= text_field_tag(:search, params[:search]) %>
+            <%= submit_tag("Search") %>
+        <% end %>
 
-    <br><br>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Description</th>
-        </tr>
-    <% @organizations.each do |organization| %>
+        <br><br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Description</th>
+            </tr>
+            <% @organizations.each do |organization| %>
 
-        <tr>
-            <td><%= organization.name %></td>
-            <td><%= organization.address %></td>
-            <td><%= organization.description %></td>
-        </tr>
+                <tr>
+                    <td><%= organization.name %></td>
+                    <td><%= organization.address %></td>
+                    <td><%= organization.description %></td>
+                </tr>
 
-   <% end %>
+            <% end %>
 
-    </table>
+        </table>
+        <br>
+        <div id="prefetch">
+            <input class="typeahead" type="text" placeholder="Organizations">
+        </div>
+        <script>
+            var organizations = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                // url points to a json file that contains an array of country names
+                prefetch: '../../search/organizations'
+            });
+
+            // passing in `null` for the `options` arguments will result in the default
+            // options being used
+            $('#prefetch .typeahead').typeahead(null, {name: 'organizations',
+                                                       source: organizations});
+        </script>
+    </body>
+</html>
