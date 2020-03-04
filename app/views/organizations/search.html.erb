@@ -1,0 +1,15 @@
+<h1>Search organization</h1>
+<h4>Search by name</h4>
+<%= form_tag(organizations_search_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag("Search") %>
+    <% end %>
+
+    <% @organizations.each do |organization| %>
+        <ul>
+            <li><%= organization.name %> </li><br>
+            <li><%= organization.address %> </li><br>
+            <li><%= organization.description %> </li><br>
+        </ul>
+
+   <% end %>

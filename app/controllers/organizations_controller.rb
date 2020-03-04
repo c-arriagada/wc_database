@@ -17,4 +17,10 @@ class OrganizationsController < ApplicationController
     redirect_to organizations_url
 
   end
+
+  def search
+    puts "search org"
+    puts params
+    @organizations = Organization.search(params[:search])
+  end
 end
