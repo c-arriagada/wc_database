@@ -5,11 +5,21 @@
     <%= submit_tag("Search") %>
     <% end %>
 
+    <br><br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Description</th>
+        </tr>
     <% @organizations.each do |organization| %>
-        <ul>
-            <li><%= organization.name %> </li><br>
-            <li><%= organization.address %> </li><br>
-            <li><%= organization.description %> </li><br>
-        </ul>
+
+        <tr>
+            <td><%= organization.name %></td>
+            <td><%= organization.address %></td>
+            <td><%= organization.description %></td>
+        </tr>
 
    <% end %>
+
+    </table>
