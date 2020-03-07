@@ -7,6 +7,7 @@ class OrganizationsController < ApplicationController
 
   def new
     puts "new org"
+    @organizations = Organization.all
   end
 
   def create
@@ -14,7 +15,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(params.require(:organization).permit(:name, :address, :description))
 
     @organization.save
-    redirect_to organizations_url
 
   end
 

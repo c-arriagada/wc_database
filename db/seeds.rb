@@ -9,3 +9,6 @@
 Organization.create([{name: 'KCW', address: '607 W Wrightwood', description: 'keep Caheri warm'},
                      {name: 'Chicago Council on Global Affairs', address: 'Two Prudential Plaza, 180 N Stetson Ave #1400', description: 'think tank'},
                      {name: 'Public Narrative', address: '33 W Ida B Wells Dr', description: 'media'}])
+
+Contact.create([{organization: 'KCW', name: 'Andrew Lai', phone_number: '555-555-5555', email: 'anrew@kcw.org'},
+                {organization: 'Sloth inc', name: 'Caheri Aguilar', phone_number: '666-666-6666', email: 'caheri@slothinc.org'}])
