@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-  def show
+  def index
     puts "It's sunny outside!"
     @organizations = Organization.all
     puts @organizations
@@ -22,5 +22,10 @@ class OrganizationsController < ApplicationController
     puts "search org"
     puts params
     @organizations = Organization.search(params[:search])
+  end
+
+  def show
+    puts "number 1 org"
+    @organization = Organization.find(params[:id])
   end
 end
