@@ -14,4 +14,21 @@
                 <td><%= @organization.description %></td>
             </tr>
     </table>
+
+    <br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Description</th>
+        </tr>
+
+        <% @contacts.each do |contact| %>
+            <tr>
+                <td><%= contact.name %></td>
+                <td><%= contact.phone_number %></td>
+                <td><%= contact.email %></td>
+            </tr>
+        <% end %>
+    </table>
 </html>

@@ -24,8 +24,16 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.search(params[:search])
   end
 
+  # Pretend that we went to /organizations/1
   def show
     puts "number 1 org"
     @organization = Organization.find(params[:id])
+    #what is saved in @organization?
+    # @organization.name = 'KCW'
+    # @organization.address.....
+    @contacts = Contact.all.select { |contact| contact.organization  == @organization.name }
+    @contacts.each do |contact|
+      puts contact.name
+    end
   end
 end
